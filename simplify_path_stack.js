@@ -51,33 +51,31 @@ class StackStructure {
 }
 
 var simplifyPath = function(s) {
-    let stackObject = new StackStructure()
-    let strArray = s.split("/").filter(item => item != "")
-    let finalArray = [];
+    let stackObject = new StackStructure();
+    let strArray = s.split("/").filter(item => item !== "");
 
+    for (let i = 0; i < strArray.length; i++) {
+        let current = strArray[i];
 
-    for (i=0; i<strArray.length; i++) {
-        stackObject.push(strArray[i])
-        finalArray.push(strArray[i])
-        let condition = (stackObject.peek() && stackObject.peek()["data"] != ".") || (!stackObject.peek())
-
-        if ( strArray[i] == '.' ) {
-            stackObject.pop() 
-            finalArray.pop()
-        } else if (strArray[i] == '..') {
-            stackObject.pop()
-            stackObject.pop()
-
-            finalArray.pop()
-            finalArray.pop()
-
+        if (current === ".") {
+            continue;
         }
 
-
+        if (current === "..") {
+            if (stackObject.peek()) {
+                stackObject.pop();
+            }
+        } else {
+            stackObject.push(current);
+        }
     }
 
-    return "/" + finalArray.join("/");
-    
+    let result = [];
+    while (stackObject.peek()) {
+        result.push(stackObject.pop());
+    }
+
+    return "/" + result.reverse().join("/");
 };
 
 
