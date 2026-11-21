@@ -1,4 +1,4 @@
-// Solution is O(n), however all four individual functions are constant i.e O(1s)
+// Solution is O(n), however all four individual functions are constant i.e O(1)
 /**
  * @param {string} s
  * @return {boolean}
