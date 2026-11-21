@@ -1,3 +1,4 @@
+// Solution is O(n)
 /**
  * @param {string} s
  * @return {boolean}
