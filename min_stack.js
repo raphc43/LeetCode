@@ -22,12 +22,9 @@ class MinStack {
         if (this.topElement) {
         	node.next = this.topElement;
         	this.topElement = node;
-
-            // Initially assuming that min in top and next node are equal
-            this.topElement.min = this.topElement.data
-
-            // Updating min
-            this.topElement.min = this.topElement.data < node.next.min ? this.topElement.data : node.next.min
+         
+         // Updating min
+         this.topElement.min = this.topElement.data <= node.next.min ? this.topElement.data : node.next.min
 
 
         } else {
